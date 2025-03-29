@@ -2,29 +2,32 @@ import { EllipsisVerticalIcon, Pencil, Trash2 } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../components/ui/dropdown-menu"
+import { useNavigate } from "react-router-dom"
 
-function UserCard() {
+function UserCard({ user, onDelete }) {
+    const navigate = useNavigate()
+
     return (
         <div className="flex items-center gap-4 p-4 border rounded-xl bg-white shadow-sm hover:shadow-md transition max-w-md w-full">
             <Avatar className="w-14 h-14">
-                <AvatarImage src={"https://reqres.in/img/faces/1-image.jpg"} alt="User Avatar" />
+                <AvatarImage src={user.avatar} alt="User Avatar" />
                 <AvatarFallback>
-                    G
+                    {user?.first_name[0]}
                 </AvatarFallback>
             </Avatar>
 
             <div className="flex justify-start gap-2 sm:gap-4 w-full overflow-hidden">
                 <div className="w-full ">
                     <h3 className="text-lg font-medium">
-                        George Bluth
+                        {user?.first_name} {user?.last_name}
                     </h3>
-                    <p className="text-sm text-muted-foreground list-decimal break-words">lindsay.ferguson@reqres.in</p>
+                    <p className="text-sm text-muted-foreground list-decimal break-words">{user.email}</p>
                 </div>
                 <div className="flex items-center gap-2 max-sm:hidden">
                     <Button
                         size="icon"
                         variant="outline"
-                    // onClick={onEdit}
+                        onClick={() => navigate(`/edit-user/${user.id}`)}
                     >
                         <Pencil className="w-4 h-4" />
                     </Button>
@@ -32,7 +35,7 @@ function UserCard() {
                     <Button
                         size="icon"
                         variant="destructive"
-                    // onClick={onDelete}
+                        onClick={() => onDelete(user.id)}
                     >
                         <Trash2 className="w-4 h-4" />
                     </Button>
@@ -48,17 +51,18 @@ function UserCard() {
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="sm:hidden">
-                    <DropdownMenuItem >
+                    <DropdownMenuItem onClick={() => navigate(`/edit-user/${user.id}`)}>
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className='text-destructive'>
+                    <DropdownMenuItem className='text-destructive' onClick={() => onDelete(user.id)}>
                         <Trash2 className="mr-2 h-4 w-4" />
                         Delete
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
+            {/* <Toaster /> */}
         </div>
     )
 }

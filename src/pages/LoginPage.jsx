@@ -5,16 +5,17 @@ import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 import toast, { Toaster } from 'react-hot-toast';
-import axios from 'axios';
 import { Loader2 } from "lucide-react";
+import { useAuth } from '../contexts/AuthContext';
 
 function LoginPage() {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
+    const { login } = useAuth();
 
     const navigate = useNavigate()
 
@@ -52,18 +53,16 @@ function LoginPage() {
         };
 
         try {
-            const res = await axios.post('https://reqres.in/api/login', formData);
+            const res = await login(formData);
 
-            if (res.status === 200) {
-                toast.success("Logged in");
-                localStorage.setItem("loggedInUserToken", JSON.stringify(res.data.token))
-                // navigate('/list')
+            if (res.success) {
+                toast.success(res.message)
+                navigate('/list')
             } else {
-                toast.error("Login failed");
+                toast.error(res.error)
             }
         } catch (error) {
-            toast.error(error.response.data.error);
-            console.log("FAILED TO LOGIN:", error);
+            console.error("Error:", error);
         } finally {
             setLoading(false);
         }
