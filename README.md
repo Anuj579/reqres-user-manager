@@ -81,6 +81,5 @@ This shows both ways to validate forms in React depending on the need.
 
 ## 👨‍💻 Developer
 
-**Anuj**
-GitHub: [@Anuj579](https://github.com/Anuj579)
-Instagram/Twitter/YouTube: [@anujbuilds](https://linktr.ee/anujbuilds)
+**Anuj**  
+Connect with me on Instagram, Twitter, or YouTube: [linktr.ee/anujbuilds](https://linktr.ee/anujbuilds)
