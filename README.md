@@ -56,6 +56,8 @@ src/
 - Delete a user.
 - Edit user details (first name, last name, email).
 - Login form with custom form validation and error messages.
+- Responsive design for mobile and desktop.
+- Clean loading indicators.
 - Edit user form with simple HTML validations (`required`, `pattern`, `type=email`).
 
 ---
@@ -72,6 +74,18 @@ This shows both ways to validate forms in React depending on the need.
 
 ---
 
+## 🛠 Tech Stack
+
+- **React.js** with Vite
+- **React Router DOM**
+- **Axios** for API calls
+- **Tailwind CSS**
+- **shadcn/ui** for UI components
+- **Lucide React** for icons
+- **React Hot Toast** for alerts
+
+---
+
 ## 💡 Assumptions & Considerations
 
 - This project uses [https://reqres.in](https://reqres.in) which is a mock API. So, any updates (like editing or deleting a user) won't persist once you reload or go back to the page, as the data resets from the API.
@@ -81,5 +95,5 @@ This shows both ways to validate forms in React depending on the need.
 
 ## 👨‍💻 Developer
 
-**Anuj**  
+**Anuj**
 Connect with me on Instagram, Twitter, or YouTube: [linktr.ee/anujbuilds](https://linktr.ee/anujbuilds)
