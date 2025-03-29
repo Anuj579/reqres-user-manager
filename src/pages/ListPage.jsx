@@ -105,7 +105,7 @@ function ListPage() {
                             Confirm Deletion
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            Are you sure you want to delete this account?
+                            Are you sure you want to delete this user?
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
